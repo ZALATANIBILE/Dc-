@@ -1,0 +1,37 @@
+1 import os, platform
+2 os.system("cd $HOME/")
+3 #os.system("termux-setup-storage")
+4os.system("xdg-open https://www.facebook.com/groups/660205018582939")
+
+6 try:
+7   import requests
+8 except(ImportError):
+9   os.system("pip install requests")
+10 try:
+11   import mechanize
+12 except(ImportError):
+13   os.system("pip install mechanize")
+14 try:
+15    import bs4
+16 except(ImportError):
+17    os.system("pip install bs4")
+
+19 rana=platform.architecture()[0]
+20 try:
+21   if rana=="32bit":
+22       __import__("Ibile32").main_menu()
+23  elif rana=="64bit":
+24        __import__("Ibile").main_menu()
+25    else:
+26        print(" We have issue to launch script")
+27        exit()
+28 except(AttributeError,OSError,KeyError,IOError):
+29    if rana == "32bit":
+30        import Ibile32
+31        Ibile32.main_menu()
+32    elif rana == "64bit":
+33        import Ibile
+34        Ibile.main_menu()
+35    else:
+36        print(" We have issue to launch script")
+37        exit() 
